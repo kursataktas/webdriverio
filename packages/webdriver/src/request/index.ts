@@ -1,10 +1,9 @@
 import path from 'node:path'
-import { EventEmitter } from 'node:events'
 import { WebDriverProtocol } from '@wdio/protocols'
 import { URL } from 'node:url'
 
 import logger from '@wdio/logger'
-import { transformCommandLogResult, sleep } from '@wdio/utils'
+import { transformCommandLogResult, sleep, EventEmitter } from '@wdio/utils'
 import type { Options } from '@wdio/types'
 
 import  { WebDriverResponseError, type WebDriverRequestError } from './error.js'
@@ -36,7 +35,7 @@ const DEFAULT_HEADERS = {
 
 const log = logger('webdriver')
 
-export default abstract class WebDriverRequest extends EventEmitter {
+export default abstract class WebDriverRequest extends EventEmitter<any> {
     #requestTimeout?: NodeJS.Timeout
 
     body?: Record<string, unknown>
