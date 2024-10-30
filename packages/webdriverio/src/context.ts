@@ -22,7 +22,7 @@ export class ContextManager {
 
     constructor(browser: WebdriverIO.Browser) {
         this.#browser = browser
-        if (!this.#isEnabled()) {
+        if (!this.#isEnabled() || typeof browser.on !== 'function') {
             return
         }
 
